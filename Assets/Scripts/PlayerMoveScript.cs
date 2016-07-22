@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler {
 
 	bool state;
 	PointerEventData pData;
@@ -24,7 +24,7 @@ public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 		state = false;
 	}
 
-	void Update() {
+	public void OnDrag(PointerEventData data) {
 		if (pData.position.x > 960) {
 			state = false;
 		}
@@ -32,6 +32,9 @@ public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 		if (pData.position.x <= 960) {
 			state = true;
 		}
+	}
+
+	void Update() {
 
 		if (state) {
 			if (pData.position.x >= 0 && pData.position.x <= 960) {

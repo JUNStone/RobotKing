@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PlayerAttackScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+public class PlayerAttackScript : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler {
 	bool state;
 	PointerEventData pData;
 	Image img;
@@ -23,7 +23,7 @@ public class PlayerAttackScript : MonoBehaviour, IPointerDownHandler, IPointerUp
 		state = false;
 	}
 
-	void Update() {
+	public void OnDrag(PointerEventData data) {
 		if (pData.position.x <= 960) {
 			state = false;
 		}
@@ -31,6 +31,9 @@ public class PlayerAttackScript : MonoBehaviour, IPointerDownHandler, IPointerUp
 		if (pData.position.x > 960) {
 			state = true;
 		}
+	}
+
+	void Update() {
 
 		if (state) {
 			if (pData.position.x > 960 && pData.position.x <= 1920) {
