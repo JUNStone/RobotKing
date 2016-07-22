@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
 	bool state;
 	PointerEventData pData;
+	public Image img;
 
 	void Awake() {
+		img = GetComponent<Image> ();
 		state = false;
 	}
 
@@ -22,15 +25,18 @@ public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 	}
 
 	void Update() {
-		Debug.Log (pData.position);
 		if (state) {
 			if (pData.position.x >= 0 && pData.position.x <= 960) {
 				if (pData.position.y >= 540 && pData.position.y <= 1080) {
+					img.color = new Color (0, 1.0f, 0);
 					Debug.Log ("UP");
 				} else if (pData.position.y >= 0 && pData.position.y < 540) {
+					img.color = new Color (1.0f, 1.0f, 0);
 					Debug.Log ("DOWN");
 				}
 			}
+		} else {
+			img.color = new Color (1.0f, 0, 0);
 		}
 	}
 }
