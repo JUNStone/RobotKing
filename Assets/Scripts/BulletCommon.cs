@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class BulletCommon : MonoBehaviour
 {
-	delegate void DelegateMethod(GameObject target);
+	delegate void DelegateMethod(GameObject target, float damage);
 
 	[SerializeField] DelegateMethod onHit;
 	[SerializeField] float damage;
