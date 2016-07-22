@@ -9,6 +9,7 @@ TagManager:
   - Grass
   - Ground
   - Zombie
+  - WCEffect
   layers:
   - Default
   - TransparentFX
