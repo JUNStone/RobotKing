@@ -15,15 +15,14 @@ public class EnemyCommons : MonoBehaviour {
 	void Awake () {
 		this.hp = maxHp;
 
-		Vector3 newPos = this.transform.position;
+		Vector3 newPos = this.gameObject.transform.position;
 		newPos.y = Random.Range (300, 850);
-		this.transform.position = newPos; // y pos anchor is bottom.
+		this.gameObject.transform.position = newPos; // y pos anchor is bottom.
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 newPos = this.transform.position;
-		newPos.x -= Time.smoothDeltaTime * moveSpeed;
+		this.gameObject.transform.Translate (Vector3.left * Time.smoothDeltaTime * moveSpeed);
 
 		if (this.vulnerable && true) { //when player-enemy collides
 			// player hp decline
