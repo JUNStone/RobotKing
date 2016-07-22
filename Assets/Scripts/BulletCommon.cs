@@ -17,10 +17,14 @@ public class BulletCommon : MonoBehaviour
 	{
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Update ()
+	{
 		this.gameObject.transform.Translate (Vector3.right * speed * Time.smoothDeltaTime);
+
+		if (this.gameObject.transform.localPosition.x > 960.0f) {
+			BulletManager.Instance.RemoveBullet (this.gameObject);
+		}
 		/*GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		for (int i = 0, len = enemies.Length; i < len; ++i) {
 			//when enemy collides
@@ -38,6 +42,12 @@ public class BulletCommon : MonoBehaviour
 		//if (this.transform.position.x >= 2000) {
 		//	Inactivate ();
 		//}
+	}
+
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		Debug.Log ("Collision");
+		BulletManager.Instance.RemoveBullet (this.gameObject);
 	}
 
 

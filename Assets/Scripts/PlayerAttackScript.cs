@@ -37,7 +37,7 @@ public class PlayerAttackScript : MonoBehaviour, IPointerDownHandler, IDragHandl
 	void Awake()
 	{
 		isFiring = false;
-		_time = 0.0f;
+		_time = delay;
 		State = false;
 		isFiring = false;
 	}
@@ -68,7 +68,7 @@ public class PlayerAttackScript : MonoBehaviour, IPointerDownHandler, IDragHandl
 	{
 		while (true) {
 			_time += Time.deltaTime;
-			if (_time < delay) {
+			if (_time <= delay) {
 				yield return null;
 			} else {
 				_time = 0.0f;

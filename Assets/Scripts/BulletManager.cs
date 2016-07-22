@@ -10,7 +10,6 @@ public class BulletManager : MonoBehaviour
 			if (!_instance) {
 				_instance = GameObject.FindObjectOfType (typeof(BulletManager)) as BulletManager;
 				if (!_instance) {
-					Debug.Log ("씨발");
 					return null;
 				}
 				return _instance;
@@ -31,7 +30,7 @@ public class BulletManager : MonoBehaviour
 	void Awake()
 	{
 		bulletList = new List<GameObject> ();
-		bulletPool = new ObjectPool (bulletPrefab, 100, transform);
+		bulletPool = new ObjectPool (bulletPrefab, 100, this.transform);
 
 		bulletPool.Preload (100);
 
@@ -50,7 +49,9 @@ public class BulletManager : MonoBehaviour
 		}
 	}
 
-	public void RemoveBullet()
+	public void RemoveBullet(GameObject obj)
 	{
+		bulletPool.Remove (obj);
+		bulletList.Remove (obj);
 	}
 }
