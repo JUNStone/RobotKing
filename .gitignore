@@ -28,7 +28,3 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-
-Assets/Resources/Sound.meta
-
-Assets/Resources/Sound/se_cannon.mp3.meta
