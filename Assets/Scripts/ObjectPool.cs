@@ -31,6 +31,7 @@ public class ObjectPool
 			if(obj == null) { return Spawn(pos); }
 		}
 
+		obj.transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
 		obj.transform.localPosition = pos;
 		obj.SetActive(true);
 		return obj;
