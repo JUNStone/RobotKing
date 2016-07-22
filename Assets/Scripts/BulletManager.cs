@@ -4,6 +4,21 @@ using System.Collections.Generic;
 
 public class BulletManager : MonoBehaviour
 {
+	private static BulletManager _instance;
+	public static BulletManager Instance {
+		get {
+			if (!_instance) {
+				_instance = GameObject.FindObjectOfType (typeof(BulletManager)) as BulletManager;
+				if (!_instance) {
+					Debug.Log ("씨발");
+					return null;
+				}
+				return _instance;
+			} else {
+				return _instance;
+			}
+		}
+	}
 	List<GameObject> bulletList;
 
 	ObjectPool bulletPool;
@@ -23,7 +38,7 @@ public class BulletManager : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
 
-	void Update()
+	public void ShootBullet()
 	{
 		bulletList.Add (bulletPool.Spawn (player.localPosition + Vector3.right * 30.0f));
 

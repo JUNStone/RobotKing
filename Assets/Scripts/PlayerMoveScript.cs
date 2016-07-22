@@ -3,14 +3,18 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler {
-
+public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
+{
+	[SerializeField]
 	bool state;
-	PointerEventData pData;
-	public Image img;
 
-	void Awake() {
-		img = GetComponent<Image> ();
+	PointerEventData pData;
+
+	Transform player;
+
+	void Awake()
+	{
+		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		state = false;
 	}
 
@@ -39,15 +43,14 @@ public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IDragHandler
 		if (state) {
 			if (pData.position.x >= 0 && pData.position.x <= 960) {
 				if (pData.position.y >= 540 && pData.position.y <= 1080) {
-					img.color = new Color (0, 1.0f, 0);
 					//플레이어 위로 이동
+					player.Translate(Vector3.up * Time.smoothDeltaTime * 30.0f);
 				} else if (pData.position.y >= 0 && pData.position.y < 540) {
-					img.color = new Color (1.0f, 1.0f, 0);
 					//플레이어 아래로 이동
+					player.Translate(Vector3.down * Time.smoothDeltaTime * 30.0f);
 				}
 			}
 		} else {
-			img.color = new Color (1.0f, 0, 0);
 			//이동터치종료
 		}
 	}
