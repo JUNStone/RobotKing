@@ -8,50 +8,65 @@ public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IDragHandler
 	[SerializeField]
 	bool state;
 
+	Vector3 dir;
+
+	bool isMoving;
+
+	bool State {
+		set {
+			state = value;
+			if (value) {
+				if (pData.position.x >= 0 && pData.position.x <= 960 && !isMoving) {
+					StartCoroutine ("Move");
+					isMoving = true;
+				}
+			} else {
+				StopCoroutine ("Move");
+				isMoving = false;
+			}
+			
+		}
+	}
+
 	PointerEventData pData;
 
 	Transform player;
 
 	void Awake()
 	{
+		isMoving = false;
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
-		state = false;
+		State = false;
 	}
 
-	public void OnPointerDown(PointerEventData data) {
-		state = true;
-
+	public void OnPointerDown(PointerEventData data)
+	{
 		pData = data;
+		State = true;
 	}
 
-	public void OnPointerUp(PointerEventData data) {
-		state = false;
+	public void OnPointerUp(PointerEventData data)
+	{
+		State = false;
 	}
 
-	public void OnDrag(PointerEventData data) {
-		if (pData.position.x > 960) {
-			state = false;
-		}
-
-		if (pData.position.x <= 960) {
-			state = true;
-		}
+	public void OnDrag(PointerEventData data)
+	{
+		if (pData.position.x > 960) { State = false; }
+		if (pData.position.x <= 960) { State = true; }
 	}
 
-	void Update() {
-
-		if (state) {
-			if (pData.position.x >= 0 && pData.position.x <= 960) {
-				if (pData.position.y >= 540 && pData.position.y <= 1080) {
-					//플레이어 위로 이동
-					player.Translate(Vector3.up * Time.smoothDeltaTime * 30.0f);
-				} else if (pData.position.y >= 0 && pData.position.y < 540) {
-					//플레이어 아래로 이동
-					player.Translate(Vector3.down * Time.smoothDeltaTime * 30.0f);
-				}
+	IEnumerator Move()
+	{
+		while (true) {
+			if (pData.position.y >= 540 && pData.position.y <= 1080) {
+				dir = Vector3.up;
+			} else if (pData.position.y >= 0 && pData.position.y < 540) {
+				dir = Vector3.down;
 			}
-		} else {
-			//이동터치종료
+			player.Translate (dir * Time.smoothDeltaTime * 30.0f);
+
+			yield return null;
 		}
 	}
 }

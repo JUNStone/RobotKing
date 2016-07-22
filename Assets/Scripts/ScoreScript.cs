@@ -1,15 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public class ScoreScript : MonoBehaviour {
+public class ScoreScript : MonoBehaviour
+{
+	Text scoreText;
+	public float score;
 
-	// Use this for initialization
-	void Start () {
-	
+	void Awake ()
+	{
+		scoreText = GetComponent<Text> ();
+		score = 0.0f;
+		scoreText.text = score.ToString ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	void Update ()
+	{
+		if (true) { // when player anim is not die
+			this.score += 125 * Time.smoothDeltaTime;
+			scoreText.text = ((int)score).ToString ();
+		}
 	}
 }
