@@ -60,6 +60,18 @@ public class EnemyCommons : CharacterScript
 		}
 	}
 
+	public IEnumerator MoveBack()
+	{
+		float _t = 0.0f;
+		float origin = moveSpeed;
+		moveSpeed = 0.0f;
+		while (_t < 1.5f) {
+			this.gameObject.transform.Translate (Vector3.right * Time.smoothDeltaTime * ((1.5f - _t) * 30));
+			yield return null;
+		}
+		moveSpeed = origin;
+	}
+
 	void Die()
 	{
 		EnemyManager.Instance.RemoveZombie (this.gameObject);

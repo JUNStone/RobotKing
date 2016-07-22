@@ -90,4 +90,11 @@ public class PlayerScript : CharacterScript
 		yield return new WaitForSeconds(0.5f);
 		weaponChangeEffect.SetActive (false);
 	}
+
+	void OnCollisionEnter2D(Collider2D other) {
+		if (other.gameObject.tag.Equals ("Zombie")) {
+			Debug.Log ("MoveBack");
+			StartCoroutine (other.gameObject.GetComponent<EnemyCommons> ().MoveBack ());
+		}
+	}
 }

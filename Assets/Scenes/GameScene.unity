@@ -889,9 +889,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a57eac70657c748be985c3358badf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalZombiePrefab: {fileID: 126620, guid: 93e01e8437d4a440090226d33b53a680, type: 2}
-  bigZombiePrefab: {fileID: 104750, guid: 5f65487e4c95a8a42b87b151370e384f, type: 2}
-  fastZombiePrefab: {fileID: 192888, guid: 6873e29554d06497184f39a28f1753f6, type: 2}
+  normalZombiePrefab: {fileID: 110812, guid: 93e01e8437d4a440090226d33b53a680, type: 2}
+  bigZombiePrefab: {fileID: 110812, guid: 93e01e8437d4a440090226d33b53a680, type: 2}
+  fastZombiePrefab: {fileID: 150908, guid: 6873e29554d06497184f39a28f1753f6, type: 2}
 --- !u!1 &723484324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,6 +1132,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 831288345}
+--- !u!224 &986211377 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22461038, guid: 24b251618d18e4475aa30761257533c3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1106078066}
 --- !u!1001 &1106078066
 Prefab:
   m_ObjectHideFlags: 0
@@ -1219,14 +1224,17 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 22461038, guid: 24b251618d18e4475aa30761257533c3, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22461038, guid: 24b251618d18e4475aa30761257533c3, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -700
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24b251618d18e4475aa30761257533c3, type: 2}
   m_IsPrefabParent: 0
---- !u!224 &1106078067 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22435942, guid: 24b251618d18e4475aa30761257533c3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1106078066}
 --- !u!1 &1112385851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,7 +1444,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1866930885}
-  - {fileID: 1106078067}
+  - {fileID: 986211377}
   - {fileID: 1355785349}
   - {fileID: 490747006}
   - {fileID: 1385448630}
