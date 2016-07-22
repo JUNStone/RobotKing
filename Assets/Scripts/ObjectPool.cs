@@ -9,9 +9,12 @@ public class ObjectPool
 
 	GameObject prefab;
 
-	public ObjectPool(GameObject prefab, int size)
+	Transform parent;
+
+	public ObjectPool(GameObject prefab, int size, Transform parent)
 	{
 		this.prefab = prefab;
+		this.parent = parent;
 		inactive = new Stack<GameObject>(size);
 	}
 
@@ -22,11 +25,13 @@ public class ObjectPool
 		if(inactive.Count == 0) {
 			obj = (GameObject)GameObject.Instantiate(prefab, pos, Quaternion.identity);
 			obj.name = prefab.name + " ("+(objectId++)+")";
+			obj.transform.SetParent (parent);
 		} else {
 			obj = inactive.Pop();
 			if(obj == null) { return Spawn(pos); }
 		}
 
+		obj.transform.localPosition = pos;
 		obj.SetActive(true);
 		return obj;
 	}
