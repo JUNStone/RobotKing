@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerScript : CharacterScript
@@ -31,6 +32,11 @@ public class PlayerScript : CharacterScript
 
 	GameObject weaponChangeEffect;
 
+	GameObject popup;
+	GameObject pause;
+
+	GameObject hpBar;
+
 	void Awake ()
 	{
 		base.Awake ();
@@ -46,7 +52,8 @@ public class PlayerScript : CharacterScript
 
 		SetStatus (CharacterStatus.Run);
 		SetWeapon (PlayerWeapon.rifle);
-
+		popup = GameObject.Find ("GameOverPopup");
+		hpBar = GameObject.Find ("HP Bar");
 	}
 
 	public void SetWeapon(PlayerWeapon status)
@@ -91,10 +98,33 @@ public class PlayerScript : CharacterScript
 		weaponChangeEffect.SetActive (false);
 	}
 
-	void OnCollisionEnter2D(Collider2D other) {
+	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag.Equals ("Zombie")) {
-			Debug.Log ("MoveBack");
+			StartCoroutine ("Hit");
+
 			StartCoroutine (other.gameObject.GetComponent<EnemyCommons> ().MoveBack ());
+			ProcessHp (other.gameObject.GetComponent<EnemyCommons> ().damage * -1);
+			hpBar.GetComponent<Image> ().fillAmount = (currentHp / maxHp);
+
+			if (status == CharacterStatus.Die) {
+				popup.SetActive (true);
+				GameObject score = GameObject.Find ("Score");
+				score.transform.localPosition = new Vector3 (0.0f, 80.0f, 0.0f);
+				StartCoroutine ("Die");
+			}
 		}
+	}
+
+	IEnumerator Die()
+	{
+		yield return new WaitForSeconds (0.5f);
+		Time.timeScale = 0.0f;
+	}
+
+	IEnumerator Hit()
+	{
+		SetStatus (CharacterStatus.Hit);
+		yield return new WaitForSeconds (0.3f);
+		SetStatus (CharacterStatus.Run);
 	}
 }

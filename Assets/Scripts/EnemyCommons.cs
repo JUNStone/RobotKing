@@ -6,7 +6,7 @@ using System.Collections;
 public class EnemyCommons : CharacterScript
 {
 	[SerializeField] float moveSpeed;
-	[SerializeField] float damage;
+	public float damage;
 
 	public int type;
 
@@ -66,7 +66,8 @@ public class EnemyCommons : CharacterScript
 		float origin = moveSpeed;
 		moveSpeed = 0.0f;
 		while (_t < 1.5f) {
-			this.gameObject.transform.Translate (Vector3.right * Time.smoothDeltaTime * ((1.5f - _t) * 30));
+			_t += Time.smoothDeltaTime;
+			this.gameObject.transform.Translate (Vector3.right * Time.smoothDeltaTime * ((1.5f - _t) * 150));
 			yield return null;
 		}
 		moveSpeed = origin;
