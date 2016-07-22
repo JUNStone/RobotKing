@@ -9,11 +9,15 @@ public class CharacterScript : MonoBehaviour
 	float maxHp;
 	float currentHp;
 
+	[SerializeField]
 	Animator _anim;
 
 	protected void Awake()
 	{
 		_anim = GetComponentInChildren<Animator> ();
+		if (_anim == null) {
+			_anim = GetComponent<Animator> ();
+		}
 
 		currentHp = maxHp;
 
@@ -25,7 +29,8 @@ public class CharacterScript : MonoBehaviour
 		_anim.SetInteger ("status", (int)status);
 	}
 
-	public void ProcessHp(float hp) {
+	public void ProcessHp(float hp)
+	{
 		currentHp += hp;
 		if (currentHp > maxHp) {
 			currentHp = maxHp;

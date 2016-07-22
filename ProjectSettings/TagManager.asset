@@ -7,6 +7,8 @@ TagManager:
   - Sky
   - Road
   - Grass
+  - Ground
+  - Zombie
   layers:
   - Default
   - TransparentFX

@@ -66,7 +66,8 @@ public class PlayerScript : CharacterScript
 		}
 	}
 
-	public void ProcessHuman(int human) {
+	public void ProcessHuman(int human)
+	{
 		currentHuman += human;
 		if (currentHuman > maxHuman) {
 			currentHuman = maxHuman;
