@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
   - Sky
+  - Road
+  - Grass
   layers:
   - Default
   - TransparentFX
