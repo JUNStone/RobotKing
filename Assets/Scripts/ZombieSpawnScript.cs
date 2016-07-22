@@ -2,16 +2,15 @@
 using System.Collections;
 
 public class ZombieSpawnScript : MonoBehaviour {
-
-	// Use this for initialization
+	
 	void Start () {
 		StartCoroutine ("SpawnNormalZombie");
 	}
 	
 	IEnumerator SpawnNormalZombie() {
 		while (true) {
-			EnemyManager.Instance.AddZombie (0);
-			yield return new WaitForSeconds (1.0f);
+			EnemyManager.Instance.AddZombie ((int) Random.Range (0, 3));
+			yield return new WaitForSeconds (Random.Range(1.0f, 5.0f));
 		}
 	}
 }
