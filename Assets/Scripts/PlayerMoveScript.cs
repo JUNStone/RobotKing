@@ -25,18 +25,27 @@ public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 	}
 
 	void Update() {
+		if (pData.position.x > 960) {
+			state = false;
+		}
+
+		if (pData.position.x <= 960) {
+			state = true;
+		}
+
 		if (state) {
 			if (pData.position.x >= 0 && pData.position.x <= 960) {
 				if (pData.position.y >= 540 && pData.position.y <= 1080) {
 					img.color = new Color (0, 1.0f, 0);
-					Debug.Log ("UP");
+					//플레이어 위로 이동
 				} else if (pData.position.y >= 0 && pData.position.y < 540) {
 					img.color = new Color (1.0f, 1.0f, 0);
-					Debug.Log ("DOWN");
+					//플레이어 아래로 이동
 				}
 			}
 		} else {
 			img.color = new Color (1.0f, 0, 0);
+			//이동터치종료
 		}
 	}
 }

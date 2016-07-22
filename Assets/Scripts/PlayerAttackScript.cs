@@ -24,15 +24,24 @@ public class PlayerAttackScript : MonoBehaviour, IPointerDownHandler, IPointerUp
 	}
 
 	void Update() {
+		if (pData.position.x <= 960) {
+			state = false;
+		}
+
+		if (pData.position.x > 960) {
+			state = true;
+		}
+
 		if (state) {
 			if (pData.position.x > 960 && pData.position.x <= 1920) {
 				if (pData.position.y >= 0 && pData.position.y <= 1080) {
 					img.color = new Color (0, 1.0f, 1.0f);
-					Debug.Log ("ATTACK");
+					//플레이어 공격
 				}
 			}
 		} else {
 			img.color = new Color (0, 0, 1.0f);
+			//공격터치종료
 		}
 	}
 }
