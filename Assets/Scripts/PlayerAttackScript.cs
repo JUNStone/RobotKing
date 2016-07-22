@@ -34,23 +34,27 @@ public class PlayerAttackScript : MonoBehaviour, IPointerDownHandler, IDragHandl
 
 	PointerEventData pData;
 
-	void Awake() {
+	void Awake()
+	{
 		isFiring = false;
 		_time = 0.0f;
 		State = false;
 		isFiring = false;
 	}
 
-	public void OnPointerDown(PointerEventData data) {
+	public void OnPointerDown(PointerEventData data)
+	{
 		pData = data;
 		State = true;
 	}
 
-	public void OnPointerUp(PointerEventData data) {
+	public void OnPointerUp(PointerEventData data)
+	{
 		State = false;
 	}
 
-	public void OnDrag(PointerEventData data) {
+	public void OnDrag(PointerEventData data)
+	{
 		if (pData.position.x <= 960) {
 			state = false;
 		}

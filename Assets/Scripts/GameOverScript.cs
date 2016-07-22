@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameOverScript : MonoBehaviour {
-
+public class GameOverScript : MonoBehaviour
+{
 	GameObject gameOverPopup;
 
-	void Awake () {
+	void Awake ()
+	{
 		gameOverPopup = GameObject.Find ("GameOverPopup");
 		gameOverPopup.SetActive (false);
 	}
 
-	public void RestartButtonClick() {
+	public void RestartButtonClick()
+	{
 		Debug.Log ("Restart");
 		Application.LoadLevel (0);
 	}
 
-	public void GoToMenuButtonClick() {
+	public void GoToMenuButtonClick()
+	{
 	}
 }

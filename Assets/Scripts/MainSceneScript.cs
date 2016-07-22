@@ -1,26 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MainSceneScript : MonoBehaviour {
-
-	// Use this for initialization
+public class MainSceneScript : MonoBehaviour
+{
 	GameObject popup;
 
-	void Awake() {
+	void Awake()
+	{
 		popup = GameObject.Find ("Howto Popup");
 		popup.SetActive (false);
 	}
 
-	public void Btn_Start() {
+	public void Btn_Start()
+	{
 		// Application.LoadLevel("StartScene");
 		// move to start scene
 	}
 
-	public void Btn_Help() {
+	public void Btn_Help()
+	{
 		popup.SetActive (true);
 	}
 
-	public void Btn_DismissHelp() {
+	public void Btn_DismissHelp()
+	{
 		popup.SetActive (false);
 	}
 }

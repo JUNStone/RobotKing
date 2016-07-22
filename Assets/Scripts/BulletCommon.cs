@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class BulletCommon : MonoBehaviour {
+public class BulletCommon : MonoBehaviour
+{
 	delegate void DelegateMethod(GameObject target);
 
 	[SerializeField] DelegateMethod onHit;
@@ -12,8 +13,8 @@ public class BulletCommon : MonoBehaviour {
 
 	private List<GameObject> hitEnemies;
 
-	// Use this for initialization
-	void Awake () {
+	void Awake ()
+	{
 		
 	}
 	

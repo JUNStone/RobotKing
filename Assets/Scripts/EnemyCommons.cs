@@ -3,7 +3,8 @@ using System.Collections;
 
 //Must be added to every zombie type
 
-public class EnemyCommons : MonoBehaviour {
+public class EnemyCommons : MonoBehaviour
+{
 	[SerializeField] float maxHp;
 	[SerializeField] float moveSpeed;
 	[SerializeField] float damage;
@@ -11,17 +12,17 @@ public class EnemyCommons : MonoBehaviour {
 	float hp = 0.0f;
 	bool vulnerable = true;
 
-	// Use this for initialization
-	void Awake () {
+	void Awake ()
+	{
 		this.hp = maxHp;
 
 		Vector3 newPos = this.gameObject.transform.position;
 		newPos.y = Random.Range (300, 850);
 		this.gameObject.transform.position = newPos; // y pos anchor is bottom.
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Update ()
+	{
 		this.gameObject.transform.Translate (Vector3.left * Time.smoothDeltaTime * moveSpeed);
 
 		if (this.vulnerable && true) { //when player-enemy collides
@@ -45,11 +46,13 @@ public class EnemyCommons : MonoBehaviour {
 		}
 	}
 
-	public void ProcessDamage (float dmg) {
+	public void ProcessDamage (float dmg)
+	{
 		this.hp -= dmg;
 	}
 
-	public bool IsVulnerable() {
+	public bool IsVulnerable()
+	{
 		return vulnerable;
 	}
 }

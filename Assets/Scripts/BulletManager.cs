@@ -49,4 +49,8 @@ public class BulletManager : MonoBehaviour
 			}
 		}
 	}
+
+	public void RemoveBullet()
+	{
+	}
 }
