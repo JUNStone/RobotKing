@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
 	[SerializeField]
+	float speed;
+
 	bool state;
 
 	Vector3 dir;
@@ -64,7 +66,7 @@ public class PlayerMoveScript : MonoBehaviour, IPointerDownHandler, IDragHandler
 			} else if (pData.position.y >= 0 && pData.position.y < 540) {
 				dir = Vector3.down;
 			}
-			player.Translate (dir * Time.smoothDeltaTime * 30.0f);
+			player.Translate (dir * Time.smoothDeltaTime * speed);
 
 			yield return null;
 		}

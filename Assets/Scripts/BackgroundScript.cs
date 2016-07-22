@@ -39,7 +39,7 @@ public class BackgroundScript : MonoBehaviour {
 
 				float interpolation = 0.0f;
 
-				if (sprites [prev].transform.localPosition.x >= 0.0f) {
+				if (sprites [prev].transform.localPosition.x > 0.0f) {
 					interpolation = sprites [prev].transform.localPosition.x;
 				} else {
 					interpolation = sprites [prev].transform.localPosition.x * -1;
@@ -48,6 +48,21 @@ public class BackgroundScript : MonoBehaviour {
 				sprites [i].transform.localPosition = new Vector3 (
 					imageOffsetX - interpolation,
 					startPosition[i].y,
+					0.0f);
+			}
+		}
+		float dist = Mathf.Abs (sprites [0].transform.localPosition.x) + Mathf.Abs (sprites [1].transform.localPosition.x) - 1920.0f;
+
+		if (dist > 1.0f) {
+			if (sprites [0].transform.localPosition.x > sprites [1].transform.localPosition.x) {
+				sprites [1].transform.localPosition = new Vector3 (
+					sprites [1].transform.localPosition.x + dist,
+					sprites [1].transform.localPosition.y,
+					0.0f);
+			} else {
+				sprites [0].transform.localPosition = new Vector3 (
+					sprites [0].transform.localPosition.x + dist,
+					sprites [0].transform.localPosition.y,
 					0.0f);
 			}
 		}

@@ -339,7 +339,7 @@ MonoBehaviour:
   tag: Grass
   sprites: []
   startPosition: []
-  speed: 120
+  speed: 240
   imageOffsetX: 0
 --- !u!224 &490747006 stripped
 RectTransform:
@@ -356,7 +356,7 @@ GameObject:
   - 224: {fileID: 747132484}
   - 222: {fileID: 747132486}
   - 114: {fileID: 747132485}
-  - 114: {fileID: 747132487}
+  - 95: {fileID: 747132488}
   m_Layer: 5
   m_Name: Player
   m_TagString: Player
@@ -415,18 +415,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 747132483}
---- !u!114 &747132487
-MonoBehaviour:
+--- !u!95 &747132488
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 747132483}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1bd5f4b550f119428a5d66f336f491a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c83f9cad00d014de69a2da7553f38e9d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &761102795
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +482,7 @@ MonoBehaviour:
   tag: Road
   sprites: []
   startPosition: []
-  speed: 80
+  speed: 160
   imageOffsetX: 0
 --- !u!1 &777356572
 GameObject:
@@ -529,7 +534,7 @@ MonoBehaviour:
   tag: Sky
   sprites: []
   startPosition: []
-  speed: 40
+  speed: 100
   imageOffsetX: 0
 --- !u!1 &1224207520
 GameObject:
@@ -1153,6 +1158,10 @@ Prefab:
     - target: {fileID: 11414500, guid: ed1c41f8ba6784b9ebdcaaf6236dadaa, type: 2}
       propertyPath: delay
       value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476308, guid: ed1c41f8ba6784b9ebdcaaf6236dadaa, type: 2}
+      propertyPath: speed
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed1c41f8ba6784b9ebdcaaf6236dadaa, type: 2}

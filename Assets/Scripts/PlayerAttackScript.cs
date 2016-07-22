@@ -8,18 +8,21 @@ public class PlayerAttackScript : MonoBehaviour, IPointerDownHandler, IDragHandl
 	[SerializeField]
 	bool state;
 
+	bool isFiring;
+
 	bool State {
 		set {
 			state = value;
 			if (value) {
-				if (pData.position.x > 960 && pData.position.x <= 1920) {
-					if (pData.position.y >= 0 && pData.position.y <= 1080) {
-						//플레이어 공격
-						StartCoroutine ("ShootBullet");
-					}
+				if (pData.position.x > 960 && pData.position.x <= 1920 &&
+				    pData.position.y >= 0 && pData.position.y <= 1080 &&
+				    !isFiring) {
+					StartCoroutine ("ShootBullet");
+					isFiring = true;
 				}
 			} else {
 				StopCoroutine ("ShootBullet");
+				isFiring = false;
 			}
 		}
 	}
@@ -29,10 +32,10 @@ public class PlayerAttackScript : MonoBehaviour, IPointerDownHandler, IDragHandl
 
 	float _time;
 
-	bool isFiring;
 	PointerEventData pData;
 
 	void Awake() {
+		isFiring = false;
 		_time = 0.0f;
 		State = false;
 		isFiring = false;
