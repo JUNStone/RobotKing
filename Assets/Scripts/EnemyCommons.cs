@@ -39,11 +39,11 @@ public class EnemyCommons : MonoBehaviour
 
 
 		if (false) { // when death animation overs
-			Destroy (this.gameObject);
+			EnemyManager.Instance.RemoveZombie (this.gameObject);
 		}
 
-		if (this.transform.position.x < -300.0f) {
-			Destroy (this.gameObject);
+		if (this.transform.localPosition.x < -1260.0f) {
+			EnemyManager.Instance.RemoveZombie (this.gameObject);
 			//humans hp decline
 		}
 	}

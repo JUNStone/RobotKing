@@ -20,6 +20,7 @@ public class EnemyManager : MonoBehaviour
 			}
 		}
 	}
+
 	List<GameObject> enemyList;
 
 	ObjectPool normalZombiePool, bigZombiePool, fastZombiePool;
@@ -33,9 +34,9 @@ public class EnemyManager : MonoBehaviour
 	void Awake()
 	{
 		enemyList = new List<GameObject> ();
-		normalZombiePool = new ObjectPool (normalZombiePrefab, 10, transform);
-		bigZombiePool = new ObjectPool (bigZombiePrefab, 10, transform);
-		fastZombiePool = new ObjectPool (fastZombiePrefab, 10, transform);
+		normalZombiePool = new ObjectPool (normalZombiePrefab, 10, this.transform);
+		bigZombiePool = new ObjectPool (bigZombiePrefab, 10, this.transform);
+		fastZombiePool = new ObjectPool (fastZombiePrefab, 10, this.transform);
 
 		normalZombiePool.Preload (10);
 		bigZombiePool.Preload (10);
@@ -44,18 +45,18 @@ public class EnemyManager : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
 
-	void AddZombie(int type)
+	public void AddZombie(int type)
 	{
 		if (type == NORMAL) {
-			enemyList.Add(normalZombiePool.Spawn (new Vector3 (1920, Random.Range (-485, 162))));
+			enemyList.Add(normalZombiePool.Spawn (new Vector3 (960, Random.Range (-300, 230), 0)));
 		} else if (type == BIG) {
-			enemyList.Add(bigZombiePool.Spawn (new Vector3 (1920, Random.Range (-485, 162))));
+			enemyList.Add(bigZombiePool.Spawn (new Vector3 (960, Random.Range (-300, 230), 0)));
 		} else if (type == FAST) {
-			enemyList.Add(fastZombiePool.Spawn (new Vector3 (1920, Random.Range (-485, 162))));
+			enemyList.Add(fastZombiePool.Spawn (new Vector3 (960, Random.Range (-300, 230), 0)));
 		}
 	}
 
-	void RemoveZombie(GameObject obj) {
+	public void RemoveZombie(GameObject obj) {
 		enemyList.Remove (obj);
 		int type = obj.GetComponent<EnemyCommons> ().type;
 		if (type == NORMAL) {
