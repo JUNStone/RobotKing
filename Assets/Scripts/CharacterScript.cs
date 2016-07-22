@@ -3,11 +3,12 @@ using System.Collections;
 
 public class CharacterScript : MonoBehaviour
 {
-	CharacterStatus status;
+	protected CharacterStatus status;
 
 	[SerializeField]
-	float maxHp;
-	float currentHp;
+	protected float maxHp;
+	[SerializeField]
+	protected float currentHp;
 
 	[SerializeField]
 	Animator _anim;
@@ -31,12 +32,16 @@ public class CharacterScript : MonoBehaviour
 
 	public void ProcessHp(float hp)
 	{
+		if (status == CharacterStatus.Die) {
+			return;
+		}
 		currentHp += hp;
 		if (currentHp > maxHp) {
 			currentHp = maxHp;
 		} else if (currentHp < 0.0f) {
 			currentHp = 0.0f;
 			SetStatus (CharacterStatus.Die);
+			GetComponent<BoxCollider2D> ().isTrigger = true;
 		}
 	}
 }

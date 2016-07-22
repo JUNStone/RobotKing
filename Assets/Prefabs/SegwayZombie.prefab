@@ -11,8 +11,8 @@ GameObject:
   - 222: {fileID: 22209202}
   - 114: {fileID: 11480644}
   - 61: {fileID: 6199686}
-  - 50: {fileID: 5053910}
   - 95: {fileID: 9597446}
+  - 114: {fileID: 11477012}
   m_Layer: 5
   m_Name: SegwayZombie
   m_TagString: Zombie
@@ -20,23 +20,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &5053910
-Rigidbody2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192888}
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &6199686
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -48,9 +31,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 40, y: 0}
   serializedVersion: 2
-  m_Size: {x: 180, y: 300}
+  m_Size: {x: 110, y: 300}
 --- !u!95 &9597446
 Animator:
   serializedVersion: 3
@@ -68,6 +51,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11477012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02dcde09f12d9f40bc5cd09fdf8d275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 80
+  moveSpeed: 300
+  damage: 10
+  type: 2
 --- !u!114 &11480644
 MonoBehaviour:
   m_ObjectHideFlags: 1

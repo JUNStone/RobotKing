@@ -39,7 +39,7 @@ public class BulletManager : MonoBehaviour
 
 	public void ShootBullet()
 	{
-		bulletList.Add (bulletPool.Spawn (player.localPosition + Vector3.right * 30.0f));
+		bulletList.Add (bulletPool.Spawn (player.localPosition + Vector3.right * 130.0f));
 
 		for (int i = bulletList.Count - 1; i >= 0; --i) {
 			if (bulletList [i].transform.localPosition.x > 960.0f) {

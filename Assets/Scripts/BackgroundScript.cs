@@ -67,4 +67,9 @@ public class BackgroundScript : MonoBehaviour {
 			}
 		}
 	}
+
+	public float GetSpeed()
+	{
+		return speed;
+	}
 }

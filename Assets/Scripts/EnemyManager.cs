@@ -47,13 +47,20 @@ public class EnemyManager : MonoBehaviour
 
 	public void AddZombie(int type)
 	{
+		GameObject zombie = null;
 		if (type == NORMAL) {
-			enemyList.Add(normalZombiePool.Spawn (new Vector3 (960, Random.Range (-300, 230), 0)));
+			zombie = normalZombiePool.Spawn (new Vector3 (960, Random.Range (-300, 230), 0));
 		} else if (type == BIG) {
-			enemyList.Add(bigZombiePool.Spawn (new Vector3 (960, Random.Range (-300, 230), 0)));
+			zombie = bigZombiePool.Spawn (new Vector3 (960, Random.Range (-300, 230), 0));
 		} else if (type == FAST) {
-			enemyList.Add(fastZombiePool.Spawn (new Vector3 (960, Random.Range (-300, 230), 0)));
+			zombie = fastZombiePool.Spawn (new Vector3 (960, Random.Range (-300, 230), 0));
 		}
+		EnemyCommons zombieStat = zombie.GetComponent<EnemyCommons> ();
+		zombieStat.ProcessHp (10000.0f);
+		zombieStat.SetStatus (CharacterStatus.Run);
+		zombie.GetComponent<Collider2D> ().isTrigger = false;
+
+		enemyList.Add (zombie);
 	}
 
 	public void RemoveZombie(GameObject obj) {

@@ -46,8 +46,10 @@ public class BulletCommon : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		Debug.Log ("Collision");
-		BulletManager.Instance.RemoveBullet (this.gameObject);
+		if(other.gameObject.tag.Equals("Zombie")) {
+			BulletManager.Instance.RemoveBullet (this.gameObject);
+			other.gameObject.GetComponent<EnemyCommons> ().ProcessDamage (damage);
+		}
 	}
 
 
