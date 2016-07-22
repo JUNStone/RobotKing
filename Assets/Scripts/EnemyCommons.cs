@@ -9,6 +9,8 @@ public class EnemyCommons : MonoBehaviour
 	[SerializeField] float moveSpeed;
 	[SerializeField] float damage;
 
+	public int type;
+
 	float hp = 0.0f;
 	bool vulnerable = true;
 
