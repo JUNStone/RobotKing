@@ -10,8 +10,8 @@ GameObject:
   - 224: {fileID: 22466810}
   - 222: {fileID: 22209202}
   - 114: {fileID: 11480644}
-  - 61: {fileID: 6199686}
   - 95: {fileID: 9597446}
+  - 61: {fileID: 6199686}
   - 114: {fileID: 11477012}
   m_Layer: 5
   m_Name: SegwayZombie
@@ -63,6 +63,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 80
+  currentHp: 0
+  _anim: {fileID: 0}
   moveSpeed: 300
   damage: 10
   type: 2

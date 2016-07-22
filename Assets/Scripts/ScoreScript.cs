@@ -17,7 +17,7 @@ public class ScoreScript : MonoBehaviour
 	void Update ()
 	{
 		if (true) { // when player anim is not die
-			this.score += 125 * Time.smoothDeltaTime;
+			this.score += 1250 * Time.smoothDeltaTime;
 			scoreText.text = ((int)score).ToString ();
 		}
 	}

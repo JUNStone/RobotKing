@@ -43,5 +43,6 @@ public class CharacterScript : MonoBehaviour
 			SetStatus (CharacterStatus.Die);
 			GetComponent<BoxCollider2D> ().isTrigger = true;
 		}
+		Debug.Log (currentHp);
 	}
 }
