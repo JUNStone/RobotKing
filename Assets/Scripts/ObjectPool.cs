@@ -15,20 +15,18 @@ public class ObjectPool
 		inactive = new Stack<GameObject>(size);
 	}
 
-	public GameObject Spawn(Vector3 pos, Quaternion rot = Quaternion.identity)
+	public GameObject Spawn(Vector3 pos)
 	{
 		GameObject obj;
 	
 		if(inactive.Count == 0) {
-			obj = (GameObject)GameObject.Instantiate(prefab, pos, rot);
+			obj = (GameObject)GameObject.Instantiate(prefab, pos, Quaternion.identity);
 			obj.name = prefab.name + " ("+(objectId++)+")";
 		} else {
 			obj = inactive.Pop();
 			if(obj == null) { return Spawn(pos); }
 		}
 
-		obj.transform.position = pos;
-		obj.transform.rotation = rot;
 		obj.SetActive(true);
 		return obj;
 	}
@@ -39,11 +37,11 @@ public class ObjectPool
 		inactive.Push(obj);
 	}
 
-	public void Preload(GameObject prefab, int size = 1)
+	public void Preload(int size = 1)
 	{
 		GameObject[] obs = new GameObject[size];
 		for (int i = 0; i < size; i++) {
-			obs[i] = Spawn (prefab, Vector3.zero);
+			obs[i] = Spawn (Vector3.zero);
 		}
 	
 		for (int i = 0; i < size; i++) {
