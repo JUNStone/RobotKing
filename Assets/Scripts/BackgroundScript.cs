@@ -1,20 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BackgroundScript : MonoBehaviour {
 
 	[SerializeField]
+	string tag;
+	[SerializeField]
 	GameObject[] sprites;
 	[SerializeField]
 	Vector3[] startPosition;
 
-	// 임시 변수
-	public float speed;
-	public float imageOffsetX;
+	[SerializeField]
+	float speed;
+	float imageOffsetX;
 
 	void Awake ()
 	{
-		sprites = GameObject.FindGameObjectsWithTag ("Background");
+		sprites = GameObject.FindGameObjectsWithTag (tag);
+		imageOffsetX = sprites [0].GetComponent<RectTransform> ().rect.width;
 		startPosition = new Vector3[sprites.Length];
 
 		for (int i = sprites.Length-1; i >= 0; --i) {
@@ -26,7 +30,9 @@ public class BackgroundScript : MonoBehaviour {
 	{
 		for (int i = sprites.Length - 1; i >= 0; --i) {
 			sprites [i].transform.Translate (Vector3.left * Time.smoothDeltaTime * speed);
-			if (sprites [i].transform.localPosition.x < imageOffsetX * -1) { sprites [i].transform.localPosition = new Vector3 (imageOffsetX * (sprites.Length - 1), 0.0f, 0.0f); }
+			if (sprites [i].transform.localPosition.x < imageOffsetX * -1) {
+				sprites [i].transform.localPosition = new Vector3 (imageOffsetX * (sprites.Length - 1), startPosition[i].y, 0.0f);
+			}
 		}
 	}
 }
