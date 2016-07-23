@@ -26,10 +26,11 @@ public class PauseScript : MonoBehaviour
 	{
 		pausePopup.SetActive (false);
 		pauseButton.SetActive (true);
-		Time.timeScale = 1.0f;
+		Time.timeScale = 2.0f;
 	}
 
 	public void MenuButtonClick()
 	{
+		Application.LoadLevel ("MainScene");
 	}
 }

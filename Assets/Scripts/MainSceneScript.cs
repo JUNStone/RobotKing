@@ -3,27 +3,27 @@ using System.Collections;
 
 public class MainSceneScript : MonoBehaviour
 {
-	GameObject popup;
+	//GameObject popup;
 
 	void Awake()
 	{
-		popup = GameObject.Find ("Howto Popup");
-		popup.SetActive (false);
+	//	popup.SetActive (false);
 	}
 
 	public void Btn_Start()
 	{
-		// Application.LoadLevel("StartScene");
+		Time.timeScale = 2.0f;
+		Application.LoadLevel("GameScene");
 		// move to start scene
 	}
 
 	public void Btn_Help()
 	{
-		popup.SetActive (true);
+	//	popup.SetActive (true);
 	}
 
 	public void Btn_DismissHelp()
 	{
-		popup.SetActive (false);
+	//	popup.SetActive (false);
 	}
 }

@@ -56,6 +56,8 @@ public class PlayerScript : CharacterScript
 		hpBar = GameObject.Find ("HP Bar");
 	}
 
+	void Start() { popup.SetActive (false); }
+
 	public void SetWeapon(PlayerWeapon status)
 	{
 		if (status != currentWeapon) {
